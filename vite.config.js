@@ -8,4 +8,5 @@ export default defineConfig({
     port: 3000,
     open: true,
   },
+  base: process.env.VITE_BASE_PATH || "/Mascon-Lighting",
 });
