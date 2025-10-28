@@ -98,19 +98,23 @@ const ExclusiveCollections = () => {
           </div>
 
           {/* Pagination */}
-          <div className="flex justify-center items-center gap-4">
+          <div className="flex justify-center items-center">
             {collections.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`text-sm font-medium transition-colors ${
-                  index === currentSlide
-                    ? "text-gray-800 underline underline-offset-4"
-                    : "text-gray-400 hover:text-gray-600"
-                }`}
-              >
-                {String(index + 1).padStart(2, "0")}
-              </button>
+              <div key={index} className="flex items-center">
+                <button
+                  onClick={() => goToSlide(index)}
+                  className={`text-sm font-medium transition-colors ${
+                    index === currentSlide
+                      ? "text-gray-800"
+                      : "text-gray-400 hover:text-gray-600"
+                  }`}
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </button>
+                {index < collections.length - 1 && (
+                  <div className="w-8 h-px bg-gray-300 mx-2"></div>
+                )}
+              </div>
             ))}
           </div>
         </div>

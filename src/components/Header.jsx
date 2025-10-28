@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/images/MasconLogo.png";
+import logo from "../assets/images/Mascon-cropped.svg";
 import imagesIcon from "../assets/images/images.png";
 import searchIcon from "../assets/images/search.png";
 import cartIcon from "../assets/images/cart.png";
@@ -36,11 +36,11 @@ const Header = ({ activeSection = "home", onNavClick }) => {
   };
 
   return (
-    <header className="bg-white px-8 py-4 border-b border-gray-100">
+    <header className="bg-white px-8 py-4  border-gray-100">
       <div className="flex items-center justify-between max-w-7xl mx-auto flex-wrap gap-4">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <div className="w-25 h-25 flex items-center justify-center font-bold text-sm rounded-lg">
+          <div className="w-[142px] h-[48px] flex items-center justify-center font-bold text-sm rounded-lg ">
             <img
               src={logo}
               alt="logo"
