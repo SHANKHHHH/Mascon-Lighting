@@ -1,10 +1,13 @@
 import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../assets/images/Mascon-cropped.svg";
 import imagesIcon from "../assets/images/images.png";
 import searchIcon from "../assets/images/search.png";
 import cartIcon from "../assets/images/cart.png";
 
 const Header = ({ activeSection = "home", onNavClick }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const navItems = [
     { id: "home", label: "HOME" },
     { id: "collections", label: "COLLECTIONS" },
@@ -24,22 +27,48 @@ const Header = ({ activeSection = "home", onNavClick }) => {
   };
 
   const handleNavClick = (section) => {
-    if (onNavClick) {
-      onNavClick(section);
-    } else {
-      // Fallback: scroll to section
-      const element = document.getElementById(section);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+    const routes = {
+      home: "/",
+      collections: "/collections",
+      about: "/about",
+      blogs: "/blogs",
+    };
+
+    if (section === "home") {
+      navigate("/");
+      return;
     }
+
+    if (section === "contact") {
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          const element = document.getElementById("contact");
+          if (element) element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        const element = document.getElementById("contact");
+        if (element) element.scrollIntoView({ behavior: "smooth" });
+      }
+      return;
+    }
+
+    const route = routes[section];
+    if (route) navigate(route);
+  };
+
+  const handleLogoClick = () => {
+    navigate("/");
   };
 
   return (
     <header className="bg-white px-8 py-4  border-gray-100">
       <div className="flex items-center justify-between max-w-7xl mx-auto flex-wrap gap-4">
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <div
+          className="flex items-center gap-3 cursor-pointer"
+          onClick={handleLogoClick}
+        >
           <div className="w-[142px] h-[48px] flex items-center justify-center font-bold text-sm rounded-lg ">
             <img
               src={logo}

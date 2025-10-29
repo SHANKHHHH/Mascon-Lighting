@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import ArtisticLamp from "../assets/images/artisitcLamp.jpg";
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
   const [activeAccordion, setActiveAccordion] = useState(0);
+  const navigate = useNavigate();
 
   const accordionItems = [
     {
@@ -127,7 +129,10 @@ const About = () => {
 
             {/* Learn More Button */}
             <div className="pt-8 float-right">
-              <button className="bg-[#004B6E] text-white px-6 py-2 rounded-full flex items-center gap-3 hover:bg-blue-700 transition-colors">
+              <button
+                onClick={() => navigate("/about")}
+                className="bg-[#004B6E] text-white px-6 py-2 rounded-full flex items-center gap-3 hover:bg-blue-700 transition-colors"
+              >
                 <span className="font-medium">Learn More</span>
                 <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
                   <ChevronRight className="w-3 h-3 text-[#004B6E]" />

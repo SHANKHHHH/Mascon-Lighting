@@ -1,10 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import SereneGlow from "../assets/images/ceilingLamp2.jpg";
 import SparkelingLights from "../assets/images/HangingLamp.jpg";
 import IcemoonSeries from "../assets/images/ceilingLamp.jpg";
 import ModernArtistry from "../assets/images/ceilingFan.jpg";
 
 const Collections = () => {
+  const navigate = useNavigate();
+
   const collections = [
     {
       id: 1,
@@ -36,7 +39,7 @@ const Collections = () => {
   ];
 
   return (
-    <section id="collections" className="py-16 px-8 bg-white">
+    <section id="collections" className="py-16 px-8 bg-white pt-20">
       <div className="max-w-7xl mx-auto">
         {/* Tags */}
         <div className="flex flex-wrap gap-3 mb-12 justify-center">
@@ -121,16 +124,19 @@ const Collections = () => {
             </p>
           </div>
 
-          {/* Third Image - Biggest (Center) */}
-          <div className="text-left">
-            <div className="mb-6 rounded-3xl overflow-hidden bg-gray-100 w-72 h-96 shadow-sm border border-gray-200">
+          {/* Third Image - Biggest (Center) - Clickable to product page */}
+          <div
+            className="text-left cursor-pointer"
+            onClick={() => navigate("/product/icemoon")}
+          >
+            <div className="mb-6 rounded-3xl overflow-hidden bg-gray-100 w-72 h-96 shadow-sm border border-gray-200 hover:shadow-lg transition-shadow">
               <img
                 src={collections[2].image}
                 alt={collections[2].title}
-                className="w-full h-full object-cover rounded-3xl"
+                className="w-full h-full object-cover rounded-3xl hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <h3 className="text-xl font-semibold text-black mb-3">
+            <h3 className="text-xl font-semibold text-black mb-3 hover:text-blue-600 transition-colors">
               {collections[2].title}
             </h3>
             <p className="text-gray-600 text-sm leading-relaxed">
